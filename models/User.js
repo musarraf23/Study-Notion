@@ -1,52 +1,52 @@
-
 const mongoose = require("mongoose");
+const { resetPasswordToken } = require("../controllers/ResetPassword");
 
 const userSchema = new mongoose.Schema({
-    firstName:{
-        type:String,
-        required:true,
-        trim:true,
+    firstName: {
+        type: String,
+        required: true,
+        trim: true,
     },
-    lastName:{
-        type:String,
-        required:true,
-        trim:true,
+    lastName: {
+        type: String,
+        required: true,
+        trim: true,
     },
-    email:{
-        type:String,
-        required:true,
-        
+    email: {
+        type: String,
+        required: true,
     },
-    accountType:{
-        type:String,
-        required:true,
-        enum:["Admin","Student","Instructor"],
-
+    accountType: {
+        type: String,
+        required: true,
+        enum: ["Admin", "Student", "Instructor"],
     },
-    additionalDetails:{
-        type:mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:"Profile",
+    additionalDetails: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Profile",
     },
-    course:[
+    course: [
         {
-            type:mongoose.Schema.ObjectId,
-            ref:"Course",
-        }
-
+            type: mongoose.Schema.ObjectId,
+            ref: "Course",
+        },
     ],
-    image:{
-        type:String,
-        required:true,
+    image: {
+        type: String,
+        required: true,
     },
-    courseProgress :[
+    token: {
+        type: String,
+    },
+    resetPasswordExpires: {
+        type: Date,
+    },
+    courseProgress: [
         {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"courseProgress",
-        }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "courseProgress",
+        },
     ],
-
-
-
-})
-module.exports = mongoose.model("User",userSchema);
+});
+module.exports = mongoose.model("User", userSchema);
