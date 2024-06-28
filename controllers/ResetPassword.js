@@ -93,5 +93,3 @@ exports.resetPassowrd = async(req,res)=>{
         });
     }
 };
-
-
