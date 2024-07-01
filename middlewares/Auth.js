@@ -33,7 +33,6 @@ exports.auth = async(req,res,next) =>{
                     success:false,
                     message:'Token is Invalid',
                 });
-                
             }
             //if jwt is valid move on to the next middleware or request handler
                
